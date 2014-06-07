@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal">
+    <fragment android:id="@+id/item_list"
+              android:layout_height="fill_parent"
+              android:name="com.rk.gumtree.android.ui.fragment.ItemListFragment"
+              android:layout_width="400dp"
+              android:layout_marginRight="10dp"/>
+    <fragment android:id="@+id/item_detail"
+              android:layout_height="fill_parent"
+              android:name="com.rk.gumtree.android.ui.fragment.ItemDetailFragment"
+              android:layout_width="fill_parent" />
+</LinearLayout>

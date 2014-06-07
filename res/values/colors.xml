@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_row_state_pressed">#ffdcddde</color>
+    <color name="light_gray">#ff777777</color>
+    <color name="prop_strikethrough_price_text_color">#ff777777</color>
+    <color name="prop_cell_secondary_color">#ffa6a6a6</color>
+    <color name="prop_cell_primary_color">#ff3d4552</color>
+    <color name="view_line">#C0C0C0</color>
+    <color name="red">#FF0000</color>
+    <color name="body_text_3">#33000000</color>
+    <color name="green">#7700ff00</color>
+</resources>

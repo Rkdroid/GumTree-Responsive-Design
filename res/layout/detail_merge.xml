@@ -1,0 +1,174 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+       <TextView android:textSize="@dimen/prop_row_name_text_detail_size" 
+		android:textStyle="bold" 
+		android:textColor="@color/prop_cell_primary_color" 
+		android:id="@+id/name_detail_text_view" 
+		android:layout_margin="10dp"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:text="@string/property_villa_name1" 
+		android:includeFontPadding="false" />
+          
+          <View android:layout_height="1dp" 
+              android:layout_width="fill_parent" 
+              android:layout_marginLeft="10dp"
+              android:background="@color/view_line"/>
+          
+          <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tlmainlayout">
+          
+	       <TextView
+			android:id="@+id/detail_text_price" 
+			android:text="@string/Price" 
+			style="@style/txt_details_key" />
+	          
+	      <TextView  
+			android:id="@+id/detail_text_price_value" 
+			android:text="@string/property_villa_price1"
+			style="@style/txt_details_value"/>
+	      
+	      <View android:layout_height="1px" 
+              android:layout_width="fill_parent"
+              android:layout_marginLeft="10dp"
+              android:layout_below="@id/detail_text_price" 
+              android:background="@color/view_line"/>
+	      
+	        <TextView  
+			android:id="@+id/detail_text_loc"
+			android:layout_below="@id/detail_text_price" 
+			android:text="@string/Location"
+			style="@style/txt_details_key" />
+	          
+	      <TextView  
+			android:id="@+id/detail_text_loc_value" 
+			android:layout_below="@id/detail_text_price_value" 
+			android:text="@string/property_villa_location1"
+			style="@style/txt_details_value"/>
+	      
+	        <View android:layout_height="1px" 
+              android:layout_width="fill_parent"
+              android:layout_marginLeft="10dp"
+              android:layout_below="@id/detail_text_loc" 
+              android:background="@color/view_line"/>
+	      
+	        <TextView 
+			android:id="@+id/detail_text_date"
+			android:layout_below="@id/detail_text_loc" 
+			android:text="@string/DatePos" 
+			style="@style/txt_details_key"/>
+	          
+	      <TextView  
+			android:id="@+id/detail_text_date_value" 
+			android:layout_below="@id/detail_text_loc_value" 
+			android:text="@string/Property_villa_Date_Posted1"
+			style="@style/txt_details_value"/>
+	      
+	       <View android:layout_height="1px" 
+              android:layout_width="fill_parent"
+              android:layout_marginLeft="10dp"
+              android:layout_below="@id/detail_text_date" 
+              android:background="@color/view_line"/>
+	       
+	        <TextView  
+			android:id="@+id/detail_text_detail"
+			android:layout_below="@id/detail_text_date" 
+			android:text="@string/Details" 
+			style="@style/txt_details_italic"/>
+	        
+	          <View android:layout_height="1dp" 
+              android:layout_width="fill_parent"
+              android:layout_marginLeft="10dp"
+              android:layout_below="@id/detail_text_detail" 
+              android:background="@color/view_line"/>
+	          
+	          
+	          
+	       <TextView
+			android:id="@+id/detail_text_proptype"
+			android:layout_below="@id/detail_text_detail" 
+			android:text="@string/PropertType" 
+			style="@style/txt_details_key" />
+	          
+	      <TextView 
+			android:id="@+id/detail_text_proptype_value"
+			android:layout_below="@id/detail_text_detail" 
+			android:text="@string/House"
+			style="@style/txt_details_value"/>
+	      
+	      <View android:layout_height="1px" 
+              android:layout_width="fill_parent"
+              android:layout_marginLeft="10dp"
+              android:layout_below="@id/detail_text_proptype" 
+              android:background="@color/view_line"/>
+	      
+	        <TextView  
+			android:id="@+id/detail_text_numbed"
+			android:layout_below="@id/detail_text_proptype" 
+			android:text="@string/NumberBeds" 
+			style="@style/txt_details_key"/>
+	          
+	      <TextView  
+			android:id="@+id/detail_text_numbed_value" 
+			android:layout_below="@id/detail_text_proptype_value" 
+			android:text="@string/property_villa_beds1"
+			style="@style/txt_details_value"/>
+	      
+	        <View android:layout_height="1px" 
+              android:layout_width="fill_parent"
+              android:layout_marginLeft="10dp"
+              android:layout_below="@id/detail_text_numbed" 
+              android:background="@color/view_line"/>
+	      
+	        <TextView  
+			android:id="@+id/detail_text_selltyp"
+			android:layout_below="@id/detail_text_numbed" 
+			android:text="@string/SellerType" 
+			style="@style/txt_details_key"/>
+	          
+	      <TextView  
+			android:id="@+id/detail_text_selltyp_value" 
+			android:layout_below="@id/detail_text_numbed" 
+			android:text="@string/Private"
+			style="@style/txt_details_value"/>
+	      
+	       <View android:layout_height="1px" 
+              android:layout_width="fill_parent"
+              android:layout_marginLeft="10dp"
+              android:layout_below="@id/detail_text_selltyp" 
+              android:background="@color/view_line"/>
+	      
+	         <TextView 
+			android:id="@+id/detail_text_desc"
+			android:layout_below="@id/detail_text_selltyp" 
+			android:text="@string/Description" 
+			style="@style/txt_details_italic"/>
+	        
+        <View android:layout_height="1dp" 
+           android:layout_width="fill_parent"
+           android:layout_marginLeft="10dp"
+           android:layout_below="@id/detail_text_desc" 
+           android:background="@color/view_line"/>
+	          
+	    <TextView android:textSize="@dimen/prop_row_dec_text_size" 
+		android:textColor="@color/prop_cell_primary_color" 
+		android:id="@+id/name_detail_text_desc_value"
+		android:layout_below="@id/detail_text_desc" 
+		android:layout_margin="10dp"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:text="@string/property_villa_Description1" 
+		android:includeFontPadding="false" />
+	    
+	    <fragment
+		    class="com.google.android.gms.maps.SupportMapFragment"
+		    android:layout_width="wrap_content"
+		    android:layout_height="200dp"
+		    android:layout_below="@id/name_detail_text_desc_value"
+		    android:layout_margin="10dp"
+		    android:id="@+id/map1"/>
+	       
+        </RelativeLayout>
+
+</merge>

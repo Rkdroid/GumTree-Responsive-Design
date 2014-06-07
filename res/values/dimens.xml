@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+	<dimen name="prop_row_thumbnail_height">95.0dip</dimen>
+    <dimen name="prop_row_thumbnail_width">95.0dip</dimen>
+    <dimen name="prop_row_cell_padding">12.0dip</dimen>
+    <dimen name="prop_row_name_text_size">17.0sp</dimen>
+    <dimen name="prop_row_name_text_detail_size">18.0sp</dimen>
+    <dimen name="prop_row_proximity_text_size">14.0sp</dimen>
+    <dimen name="prop_row_price_text_size">20.0sp</dimen>
+    <dimen name="prop_row_dec_text_size">16.0sp</dimen>
+
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="property_villa">
+        <item>Property_Date_Posted,3/6/2014</item>
+        <item>Property_Type,House</item>
+        <item>Property_Number_Beds,4</item>
+        <item>Property_Seller_Type,Private</item>
+        <item>Property_PhNumber,+971569743846</item>
+        <item>Property_Email,test@gmail.com</item>
+    </string-array>
+</resources>

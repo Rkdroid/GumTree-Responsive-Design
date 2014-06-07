@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools">
+
+    
+       <item android:id="@+id/menu_call"
+        android:title="@string/call"
+        app:showAsAction="ifRoom|withText" />
+    
+    	<item android:id="@+id/menu_sms"
+        android:title="@string/sms"
+        app:showAsAction="ifRoom|withText"/>
+	 
+    	<item android:id="@+id/menu_email"
+        android:title="@string/email"
+        app:showAsAction="ifRoom|withText"/>
+</menu>
