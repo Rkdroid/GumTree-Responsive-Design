@@ -11,4 +11,5 @@ Smartphone and Tablet Optimized app, supports from android 2.1 to the latest ver
 versionName=1.1 - Changes
 
 1. Instead of using Strings.xml (app resources to create fixtures (ads)), mocked the ads data using json, GSON is used for parsing.
-2. Custom Share View has been implemented for the view item page. removed the share view from search results page. 
+2. Custom Share View has been implemented for the view item page. removed the share view from search results page. this library helped in https://github.com/dgmltn/Android-ShareEverywhere
+achieving the functionality.
