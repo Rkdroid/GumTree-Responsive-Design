@@ -13,7 +13,7 @@ public class GumtreeApp extends Application{
 	
 	public static String[] mImages;
 	public static final String image_path = "classified_Images";
-	public static PropertyDAO appPropertyDAO;
+	private PropertyDAO appPropertyDAO;
 	
 	@Override
 	public void onCreate() {
@@ -37,15 +37,16 @@ public class GumtreeApp extends Application{
 		// Initialize ImageLoader with configuration.
 		ImageLoader.getInstance().init(config);
 	}
+   
 
 
-	public static PropertyDAO getAppPropertyDAO() {
+	public PropertyDAO getAppPropertyDAO() {
 		return appPropertyDAO;
 	}
 
 
-	public static void setAppPropertyDAO(PropertyDAO appPropertyDAO) {
-		GumtreeApp.appPropertyDAO = appPropertyDAO;
+	public void setAppPropertyDAO(PropertyDAO appPropertyDAO) {
+		this.appPropertyDAO = appPropertyDAO;
 	}
     
 

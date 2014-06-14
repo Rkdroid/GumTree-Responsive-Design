@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>   
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+       android:layout_width="fill_parent"
+       android:layout_height="48dp"
+       android:gravity="bottom"
+       android:background="@color/bottom_action_color"
+       android:orientation="horizontal">
+       
+       <Button android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="match_parent"
+           android:layout_gravity="bottom"
+           android:text="CALL"/>
+       
+       
+       <Button android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="match_parent"
+           android:layout_gravity="bottom"
+           android:text="SMS"/>
+       
+       
+       <Button android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="match_parent"
+           android:layout_gravity="bottom"
+           android:text="EMAIL"/>
+       
+   </LinearLayout>
+

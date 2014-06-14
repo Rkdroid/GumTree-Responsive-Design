@@ -25,10 +25,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.rk.gumtree.android.app.GumtreeApp;
 import com.rk.gumtree.android.model.PropertyDAO;
 import com.rk.gumtree.android.provider.GumTreeProvider.PropertyContract;
 
-import static com.rk.gumtree.android.app.GumtreeApp.*;
 import static com.rk.gumtree.android.app.GumtreeApp.image_path;
 import static com.rk.gumtree.android.app.GumtreeApp.mImages;
 import static com.rk.gumtree.android.util.LogUtils.*;
@@ -249,7 +249,8 @@ public class ItemListFragment extends ListFragment implements
 	
 		final Cursor cursor = mAdapter.getCursor();
 		cursor.moveToPosition(position);
-		setAppPropertyDAO(new PropertyDAO(cursor.getString(PropertyQuery.PROP_NAME), 
+		GumtreeApp gPropertyState = (GumtreeApp) getActivity().getApplicationContext();
+		gPropertyState.setAppPropertyDAO(new PropertyDAO(cursor.getString(PropertyQuery.PROP_NAME), 
 				cursor.getString(PropertyQuery.PROP_PRICE), cursor.getString(PropertyQuery.PROP_ADDRESS), 
 				cursor.getString(PropertyQuery.PROP_DATE), cursor.getString(PropertyQuery.PROP_TYPE), 
 				cursor.getString(PropertyQuery.PROP_NUMBER_BEDS), cursor.getString(PropertyQuery.PROP_SELLER_TYPE),

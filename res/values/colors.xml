@@ -9,4 +9,5 @@
     <color name="red">#FF0000</color>
     <color name="body_text_3">#33000000</color>
     <color name="green">#7700ff00</color>
+    <color name="bottom_action_color">#555555</color>
 </resources>

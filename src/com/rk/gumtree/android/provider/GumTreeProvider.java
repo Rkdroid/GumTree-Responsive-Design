@@ -1,11 +1,23 @@
 package com.rk.gumtree.android.provider;
 
+import static com.rk.gumtree.android.util.LogUtils.makeLogTag;
+
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.rk.gumtree.android.R;
+import com.rk.gumtree.android.model.PropertyDAO;
 import com.tjeannin.provigen.InvalidContractException;
 import com.tjeannin.provigen.ProviGenBaseContract;
 import com.tjeannin.provigen.ProviGenProvider;
@@ -14,8 +26,11 @@ import com.tjeannin.provigen.annotation.ContentUri;
 import com.tjeannin.provigen.annotation.Contract;
 import com.tjeannin.provigen.annotation.Column.Type;
 
+import static com.rk.gumtree.android.util.LogUtils.*;
+
 public class GumTreeProvider extends ProviGenProvider{
 	
+	private static final String TAG = makeLogTag(GumTreeProvider.class);
 	
 	public GumTreeProvider() throws InvalidContractException {
 		super(PropertyContract.class);
@@ -64,28 +79,49 @@ public class GumTreeProvider extends ProviGenProvider{
 		
 	}
 	
-	public static void insertRecords(final Context context, final int rcnt){
-			final Resources res = context.getResources();
-			int resId1 = res.getIdentifier("property_villa_name" + rcnt, "string", context.getPackageName());
-			int resId2 = res.getIdentifier("property_villa_price" + rcnt, "string", context.getPackageName());
-			int resId3 = res.getIdentifier("property_villa_location" + rcnt, "string", context.getPackageName());
-			int resId4 = res.getIdentifier("Property_villa_Date_Posted" + rcnt, "string", context.getPackageName());
-			int resId5 = res.getIdentifier("property_villa_Description" + rcnt, "string", context.getPackageName());
-			int resId6 = res.getIdentifier("property_villa_phone" + rcnt, "string", context.getPackageName());
-			int resId7 = res.getIdentifier("property_villa_email" + rcnt, "string", context.getPackageName());
-			int resId8 = res.getIdentifier("property_villa_beds" + rcnt, "string", context.getPackageName());
+	/**
+	 * Reads the Json File and returns the reader
+	 * @param context
+	 * @return
+	 * @throws FileNotFoundException
+	 */
+	private static JsonReader getJsonReader (final Context context) throws FileNotFoundException{
+		JsonReader reader = null;
+		final Resources res = context.getResources();
+		reader = new JsonReader(
+		new InputStreamReader(res.openRawResource(R.raw.ads)));
+		return reader;
+	}
 			
-			ContentValues values = new ContentValues();
-			values.put(PropertyContract.COLUMN_NAME, context.getString(resId1));
-			values.put(PropertyContract.COLUMN_PRICE, context.getString(resId2));
-			values.put(PropertyContract.COLUMN_LOCATION, context.getString(resId3));
-			values.put(PropertyContract.COLUMN_DATE_POSTED, context.getString(resId4));
-			values.put(PropertyContract.COLUMN_DESCRIPTION, context.getString(resId5));
-			values.put(PropertyContract.COLUMN_PHNUMBER, context.getString(resId6));
-			values.put(PropertyContract.COLUMN_EMAIL, context.getString(resId7));
-			values.put(PropertyContract.COLUMN_NUMBER_BEDS, context.getString(resId8));
-			
-			context.getContentResolver().insert(PropertyContract.CONTENT_URI, values);
+	
+	public static void insertRecords(final Context context){
+			JsonReader reader = null;
+		try {
+			reader = getJsonReader(context);
+			Gson adGson = new Gson();
+			JsonParser jsonParser = new JsonParser();
+			JsonArray propArray =  jsonParser.parse(reader).getAsJsonArray();
+			for ( JsonElement aUser : propArray ){
+				PropertyDAO mPropertyAd = adGson.fromJson(aUser, PropertyDAO.class);
+				if(mPropertyAd!=null){
+					ContentValues values = new ContentValues();
+					values.put(PropertyContract.COLUMN_NAME, mPropertyAd.name);
+					values.put(PropertyContract.COLUMN_PRICE, mPropertyAd.price);
+					values.put(PropertyContract.COLUMN_LOCATION, mPropertyAd.location);
+					values.put(PropertyContract.COLUMN_DATE_POSTED, mPropertyAd.date_Posted);
+					values.put(PropertyContract.COLUMN_DESCRIPTION, mPropertyAd.description);
+					values.put(PropertyContract.COLUMN_PHNUMBER, mPropertyAd.phoneNumber);
+					values.put(PropertyContract.COLUMN_EMAIL, mPropertyAd.email);
+					values.put(PropertyContract.COLUMN_NUMBER_BEDS, mPropertyAd.number_Beds);
+					
+					context.getContentResolver().insert(PropertyContract.CONTENT_URI, values);
+				}
+			}
+		   } catch (FileNotFoundException e) {
+				LOGE(TAG, "File not found in raw folder", e);
+		   	}catch (Exception e) {
+		   		LOGE(TAG, "json input malfunctioned", e);
+			}
 }
 	
 	

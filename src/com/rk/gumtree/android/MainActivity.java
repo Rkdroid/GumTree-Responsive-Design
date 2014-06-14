@@ -31,7 +31,6 @@ public class MainActivity extends ActionBarActivity implements
 	ItemListFragment mItemListFragment;
 	AppStart appStart = AppStart.FIRST_TIME;
 	private static final String TAG = makeLogTag(MainActivity.class);
-	private static final int PROPERTY_RECORD_COUNT = 10;
 	boolean mIsDualPane = false;
 	int mItemIndex = 0;
 	InsertDBTask mDBTask; 
@@ -53,6 +52,8 @@ public class MainActivity extends ActionBarActivity implements
 	 *  As we have very few records to insert in DB, the insertion can be done without any background thread also,
 	 *  but as recommended by google all the IO operations need to be done on background thread, used asynctask here.
 	 *	will get executed only once the application is launched for the first time.
+	 *
+	 *	List of Ads is obtained from Json file stored in raw folder of resources. data parsed using GSON
 	 */
 			mDBTask = new InsertDBTask();
 			mDBTask.execute();
@@ -76,6 +77,8 @@ public class MainActivity extends ActionBarActivity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		
+	if(mIsDualPane){
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 
@@ -84,6 +87,7 @@ public class MainActivity extends ActionBarActivity implements
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
         /** Setting a share intent */
         mShareActionProvider.setShareIntent(getDefaultShareIntent());
+		}
 		return true;
 	}
 	
@@ -149,9 +153,7 @@ public class MainActivity extends ActionBarActivity implements
 
 		@Override
 		protected Void doInBackground(Void... params) {
-			for(int index=1;index<=PROPERTY_RECORD_COUNT;index++){
-				insertRecords(MainActivity.this, index);
-			}
+				insertRecords(MainActivity.this);
 			return null;
 		}
 		

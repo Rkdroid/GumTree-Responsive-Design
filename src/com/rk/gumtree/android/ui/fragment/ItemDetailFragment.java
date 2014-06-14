@@ -12,6 +12,8 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.rk.gumtree.android.R;
+import com.rk.gumtree.android.app.GumtreeApp;
+import com.rk.gumtree.android.model.PropertyDAO;
 
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +42,7 @@ public class ItemDetailFragment extends Fragment{
 	private static final String TAG = makeLogTag(ItemDetailFragment.class);
 	private ImageLoader imageLoader = ImageLoader.getInstance();
 	GoogleMap mGoogleMap;
-	
+	private PropertyDAO detailPropertyDAO;
 	
 	public ItemDetailFragment(){
 		super();
@@ -104,23 +106,23 @@ public class ItemDetailFragment extends Fragment{
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
 		case R.id.menu_call:
-			if(appPropertyDAO!=null){
-				Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + appPropertyDAO.PhoneNumber));
+			if(detailPropertyDAO!=null){
+				Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + detailPropertyDAO.phoneNumber));
 				startActivity(intent);
 			}
 			break;
 		case R.id.menu_sms:
-			if(appPropertyDAO!=null){
+			if(detailPropertyDAO!=null){
 				Intent sendIntent = new Intent(Intent.ACTION_VIEW);
 				sendIntent.putExtra("sms_body", "I am intersted in the property"); 
-				sendIntent.putExtra("address", appPropertyDAO.PhoneNumber);
+				sendIntent.putExtra("address", detailPropertyDAO.phoneNumber);
 				sendIntent.setType("vnd.android-dir/mms-sms");
 				startActivity(sendIntent);
 			}
 			break;
 		case R.id.menu_email:
-			if(appPropertyDAO!=null){
-				String to = appPropertyDAO.Email;
+			if(detailPropertyDAO!=null){
+				String to = detailPropertyDAO.email;
 	            String subject = "Propert Ad in Gumtree";
 	            String message = "I am intersted in the property";
 	 
@@ -185,19 +187,21 @@ public class ItemDetailFragment extends Fragment{
 	}
 	
 	public void reloadView(){
-		if(appPropertyDAO!=null){
+		GumtreeApp gPropertyState = (GumtreeApp) getActivity().getApplicationContext();
+		detailPropertyDAO = gPropertyState.getAppPropertyDAO();
+		if(detailPropertyDAO!=null){
 			TextView genericText = (TextView) mView.findViewById(R.id.detail_text_price_value);
-			genericText.setText(appPropertyDAO.Price);
+			genericText.setText(detailPropertyDAO.price);
 			genericText = (TextView) mView.findViewById(R.id.name_detail_text_view);
-			genericText.setText(appPropertyDAO.Name);
+			genericText.setText(detailPropertyDAO.name);
 			genericText = (TextView) mView.findViewById(R.id.detail_text_date_value);
-			genericText.setText(appPropertyDAO.Date_Posted);
+			genericText.setText(detailPropertyDAO.date_Posted);
 			genericText = (TextView) mView.findViewById(R.id.name_detail_text_desc_value);
-			genericText.setText(appPropertyDAO.Description);
+			genericText.setText(detailPropertyDAO.description);
 			genericText = (TextView) mView.findViewById(R.id.detail_text_numbed_value);
-			genericText.setText(appPropertyDAO.Number_Beds);
+			genericText.setText(detailPropertyDAO.number_Beds);
 			genericText = (TextView) mView.findViewById(R.id.detail_text_loc_value);
-			genericText.setText(appPropertyDAO.Location);
+			genericText.setText(detailPropertyDAO.location);
 		}
 	}
 
